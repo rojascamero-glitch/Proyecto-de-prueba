@@ -58,11 +58,11 @@ const AudioEngine = (() => {
    ============================================= */
 const TrackManager = (() => {
   const tracks = [
+    { title: 'Risk',          artist: '',  src: 'tracks/risk.mp3' },
     { title: 'A Veces R&B',   artist: '',  src: 'tracks/a-veces r&b.mp3' },
     { title: 'A Veces',       artist: '',  src: 'tracks/a-veces.mp3' },
     { title: 'Alicia',        artist: '',  src: 'tracks/alicia.mp3' },
     { title: 'Nadie Como Tú', artist: '',  src: 'tracks/nadie-como-tú1.mp3' },
-    { title: 'Risk',          artist: '',  src: 'tracks/risk.mp3' },
     { title: 'Tu Risa',       artist: '',  src: 'tracks/tu-risa.mp3' },
   ];
   let idx = 0;
