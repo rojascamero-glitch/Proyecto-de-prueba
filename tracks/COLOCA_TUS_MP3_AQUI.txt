@@ -1,0 +1,12 @@
+Coloca tus archivos MP3 en esta carpeta con estos nombres:
+
+  blue-bossa.mp3
+  autumn-leaves.mp3
+  fly-me-to-the-moon.mp3
+
+O usa el botón "Cargar MP3" en el reproductor para cargar cualquier archivo de tu ordenador.
+
+Fuentes de música libre de derechos:
+  - https://pixabay.com/music/  (busca "jazz" o "lounge")
+  - https://freemusicarchive.org
+  - https://musopen.org

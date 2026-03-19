@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS AUDIO — NS-1200 PRO</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Autoplay overlay -->
+  <div id="autoplay-overlay" class="hidden">
+    <div class="overlay-box">
+      <div class="overlay-hex">⬡</div>
+      <div class="overlay-title">NEXUS AUDIO</div>
+      <div class="overlay-sub">CLICK TO INITIALIZE SYSTEM</div>
+    </div>
+  </div>
+
+  <main class="cabinet">
+
+    <!-- Corner decorations -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- Header -->
+    <header class="cabinet-header">
+      <div class="brand-block">
+        <span class="brand-hex">⬡</span>
+        <div>
+          <div class="brand-name">NEXUS AUDIO</div>
+          <div class="brand-model">NS-1200 PRO  ·  DIGITAL TURNTABLE SYSTEM</div>
+        </div>
+      </div>
+      <div class="sys-status">
+        <span class="sys-tag">SYS</span>
+        <div class="led" id="led"></div>
+        <span class="sys-state" id="sys-state">STANDBY</span>
+      </div>
+    </header>
+
+    <!-- Scan line bar below header -->
+    <div class="scan-bar">
+      <div class="scan-bar-fill"></div>
+    </div>
+
+    <!-- Body -->
+    <div class="cabinet-body">
+
+      <!-- LEFT: Turntable -->
+      <div class="turntable-section" id="turntable-section">
+
+        <!-- Platter ring -->
+        <div class="platter-ring"></div>
+        <div class="platter">
+          <div class="felt"></div>
+          <div class="vinyl" id="vinyl">
+            <div class="vinyl-label" id="vinyl-label">
+              <div class="label-inner">
+                <div class="label-hex-grid"></div>
+                <div class="label-content">
+                  <div class="label-brand">NEXUS</div>
+                  <div class="label-title" id="label-title">JAZZ SAMPLE</div>
+                  <div class="label-artist" id="label-artist">Demo Track</div>
+                  <div class="label-rpm">33⅓ RPM</div>
+                </div>
+                <div class="label-ring-outer"></div>
+                <div class="label-ring-inner"></div>
+              </div>
+            </div>
+            <div class="spindle"></div>
+          </div>
+        </div>
+
+        <!-- Tonearm: assembly is the pivot point (0×0 with overflow visible) -->
+        <div class="tonearm-assembly" id="tonearm-assembly">
+          <div class="tonearm-pivot-dot"></div>
+          <div class="tonearm-pivot-ring"></div>
+          <div id="tonearm" class="tonearm">
+            <div class="tonearm-shaft">
+              <div class="tonearm-glow-line"></div>
+            </div>
+            <div class="tonearm-headshell">
+              <div class="tonearm-cartridge"></div>
+              <div class="stylus-needle"></div>
+              <div class="stylus-tip" id="stylus-tip"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drag hint (hides once user drags) -->
+        <div class="drag-hint" id="drag-hint">
+          <span>◁ DRAG NEEDLE TO RECORD</span>
+        </div>
+
+        <!-- Drop zone glow overlay (shown when dragging near record) -->
+        <div class="drop-zone-ring" id="drop-zone-ring"></div>
+
+      </div>
+
+      <!-- RIGHT: Controls -->
+      <div class="controls-section">
+
+        <!-- Equalizer visualizer -->
+        <div class="visualizer" id="visualizer">
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+          <div class="viz-bar"></div><div class="viz-bar"></div>
+        </div>
+
+        <!-- Track info display -->
+        <div class="track-info-panel">
+          <div class="panel-label">NOW PLAYING</div>
+          <div class="track-title" id="track-title">—</div>
+          <div class="track-artist" id="track-artist">Load a track to begin</div>
+        </div>
+
+        <!-- Transport -->
+        <div class="transport">
+          <button class="btn-transport" id="btn-prev" title="Anterior (←)">
+            <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+          </button>
+          <button class="btn-transport btn-play" id="btn-play" title="Play/Pause (Space)">
+            <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="icon-pause hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button class="btn-transport" id="btn-next" title="Siguiente (→)">
+            <svg viewBox="0 0 24 24"><path d="m6 18 8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-section">
+          <span class="time-code" id="time-current">0:00</span>
+          <div class="progress-bar" id="progress-bar">
+            <div class="progress-track"></div>
+            <div class="progress-fill" id="progress-fill"></div>
+            <div class="progress-scan" id="progress-scan"></div>
+            <div class="progress-thumb" id="progress-thumb"></div>
+          </div>
+          <span class="time-code" id="time-total">0:00</span>
+        </div>
+
+        <!-- Volume -->
+        <div class="volume-section">
+          <button class="btn-mute" id="btn-mute" title="Mute (M)">
+            <svg id="icon-vol" viewBox="0 0 24 24">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+            </svg>
+          </button>
+          <div class="vol-label">VOL</div>
+          <input type="range" class="volume-slider" id="volume-slider"
+                 min="0" max="100" value="80" />
+          <span class="vol-value" id="vol-value">80</span>
+        </div>
+
+        <!-- File + hints row -->
+        <div class="bottom-row">
+          <label class="btn-file" for="file-input">
+            <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+            LOAD FILE
+          </label>
+          <input type="file" id="file-input" accept="audio/*" multiple />
+          <div class="key-hints">
+            <kbd>SPC</kbd> play
+            <kbd>←</kbd><kbd>→</kbd> tracks
+            <kbd>M</kbd> mute
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="cabinet-footer">
+      <div class="footer-data">
+        <span>FREQ: 20Hz–20kHz</span>
+        <span>SNR: 96dB</span>
+        <span>33⅓ RPM</span>
+        <span>STEREO</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <audio id="audio-element" preload="metadata"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
